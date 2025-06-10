@@ -11,7 +11,7 @@ function App() {
     <>
       <Header />
       <main>
-        {!isRunning && <button id="quiz1" onClick={handleRunning}>Start Quiz</button>}
+        {!isRunning && <button id="quiz1" onClick={handleRunning}>Start Quiz Garnier</button>}
         {isRunning && <Quiz />}
       </main>
     </>
