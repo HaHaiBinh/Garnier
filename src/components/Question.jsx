@@ -9,37 +9,24 @@ const Question = ({ index, onSelectAnswer, onSkip }) => {
     answerPosition: null,
   });
 
-  let timer = 10000;
+  let timer = 90000;
   if (answer.selectedAnswer) {
     timer = 1000;
-  }
-  if (answer.answerPosition !== null) {
-    timer = 2000;
   }
 
   function handleSelectAnswer(answer, position) {
     setAnswer({
       selectedAnswer: answer,
-      answerPosition: null,
+      answerPosition: position,
     });
 
     setTimeout(() => {
-      setAnswer({
-        selectedAnswer: answer,
-        answerPosition: position, // Lưu vị trí đáp án (A=0, B=1, C=2, D=3)
-      });
-
-      setTimeout(() => {
-        onSelectAnswer({ text: answer, position: position });
-      }, 2000);
+      onSelectAnswer({ text: answer, position: position });
     }, 1000);
   }
-  
+
   let answerState = "";
-  if (answer.selectedAnswer && answer.answerPosition !== null) {
-    // Luôn hiển thị màu xanh khi chọn xong
-    answerState = "answered";
-  } else if (answer.selectedAnswer) {
+  if (answer.selectedAnswer) {
     answerState = "answered";
   }
 

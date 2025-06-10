@@ -1,5 +1,4 @@
 import completeImg from "../assets/quiz-complete.png";
-import QUESTIONS from "../questions";
 
 const Summary = ({ userAnswers }) => {
   // Đếm số lần chọn mỗi đáp án
@@ -11,17 +10,21 @@ const Summary = ({ userAnswers }) => {
   };
 
   // Đếm số lượng câu trả lời cho mỗi vị trí
-  userAnswers.forEach(answer => {
-    if (answer.position === 0) answerCounts.A++;
-    else if (answer.position === 1) answerCounts.B++;
-    else if (answer.position === 2) answerCounts.C++;
-    else if (answer.position === 3) answerCounts.D++;
+  userAnswers.forEach((answer, index) => {
+    console.log(`Câu ${index + 1}: text = ${answer.text}`);
+    // Lấy ký tự đầu tiên của text để xác định đáp án (A, B, C, hoặc D)
+    const firstChar = answer.text.charAt(0).toUpperCase();
+    
+    if (firstChar === 'A') answerCounts.A++;
+    else if (firstChar === 'B') answerCounts.B++;
+    else if (firstChar === 'C') answerCounts.C++;
+    else if (firstChar === 'D') answerCounts.D++;
   });
 
   // Xác định đáp án được chọn nhiều nhất
-  const mostFrequent = Object.keys(answerCounts).reduce((a, b) => 
-    answerCounts[a] > answerCounts[b] ? a : b
-  );
+  const mostFrequent = Object.keys(answerCounts).reduce((a, b) => {
+    return answerCounts[a] > answerCounts[b] ? a : b;
+  });
 
   // Kết quả dựa trên đáp án được chọn nhiều nhất
   let resultTitle = '';
@@ -103,13 +106,16 @@ const Summary = ({ userAnswers }) => {
       break;
   }
 
+  const handleClick = () => {
+    window.location.reload();
+  }
+
   return (
     <div id="summary">
-      <img src={completeImg} alt="Quiz Over" />
+      <img src={completeImg} alt="Quiz Over" onClick={handleClick} style={{ cursor: 'pointer' }} />
       <h2>Kết quả</h2>
       
       <div id="result-stats">
-        {/* <h3>{resultTitle}</h3> */}
         <p style={{ fontSize: '1.2rem' }}>{resultTitle}</p>
         <p>Bạn phù hợp với những màu như: <strong>{resultColors}</strong></p>
         <p>Màu áo khoác ngoài: <strong>{resultCoat}</strong></p>

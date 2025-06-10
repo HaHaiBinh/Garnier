@@ -1,6 +1,4 @@
 const Answers = (props) => {
-  const LABELS = ['A', 'B', 'C', 'D'];
-
   return (
     <ul id="answers">
       {props.answers.map((answer, index) => {
@@ -22,7 +20,7 @@ const Answers = (props) => {
               onClick={() => props.handleSelectAnswer(answer)}
               disabled={props.answerState !== ''}
             >
-              <span className="answer-label">{LABELS[index]}.</span> {answer}
+              <span className="answer-label"key={index}></span> {answer}
             </button>
           </li>
         );
