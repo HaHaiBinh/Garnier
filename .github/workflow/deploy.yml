@@ -1,0 +1,32 @@
+name: Upload React App ZIP via API
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Zip the build folder
+        run: zip -r dist.zip dist
+
+      - name: Upload ZIP via API
+        run: |
+          curl -X POST https://n8n.ginjs3.click/webhook/deploy/garnier-quiz \
+            -u "${{ secrets.API_USERNAME }}:${{ secrets.API_PASSWORD }}" \
+            -F "file=@dist.zip"
