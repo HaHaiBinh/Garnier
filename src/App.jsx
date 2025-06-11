@@ -9,7 +9,7 @@ function App() {
   }
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main>
         {!isRunning && <button id="quiz1" onClick={handleRunning}>Start Quiz</button>}
         {isRunning && <Quiz />}

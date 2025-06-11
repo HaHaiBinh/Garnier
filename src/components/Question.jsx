@@ -38,13 +38,24 @@ const Question = ({ index, onSelectAnswer, onSkip }) => {
         onTimeout={answer.selectedAnswer === "" ? onSkip : null}
         mode={answerState}
       />
-      <h2>{QUESTIONS[index].text}</h2>
-      <Answers
-        answers={QUESTIONS[index].answers}
-        selectedAnswer={answer.selectedAnswer}
-        answerState={answerState}
-        handleSelectAnswer={handleSelectAnswer}
-      />
+      <div className="question-content">
+        <div className="question-image">
+          <img
+            src={QUESTIONS[index].image}
+            alt={`Question ${index + 1}`}
+            className="question-img"
+          />
+        </div>
+        <div className="question-text-answers">
+          <h2>{QUESTIONS[index].text}</h2>
+          <Answers
+            answers={QUESTIONS[index].answers}
+            selectedAnswer={answer.selectedAnswer}
+            answerState={answerState}
+            handleSelectAnswer={handleSelectAnswer}
+          />
+        </div>
+      </div>
     </div>
   );
 };
