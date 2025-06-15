@@ -33,70 +33,49 @@ const Summary = ({ userAnswers }) => {
 
   switch (mostFrequent) {
     case 'A':
-      resultTitle = 'Bạn thuộc nhóm màu Spring - nhóm màu mùa Xuân';
+      resultTitle = 'Bạn thuộc nhóm màu Spring (Tươi sáng - Ấm áp)';
       resultColors = 'Những người thuộc nhóm màu này thường phù hợp với các tông màu nhẹ nhàng như hồng, hồng nhạt, cam đào hoặc các gam màu pastel. Đây là nhóm màu mang đặc trưng đại diện cho sự ngọt ngào, tươi tắn và trẻ trung. Bạn có thể dựa theo những đặc điểm này để lựa chọn kiểu tóc và phong cách makeup phù hợp với bản thân.';
       colorPalette = [
-        '#F05E3B', // Đỏ cam
-        '#FF7F6F', // Hồng san hô
-        '#F28B35', // Cam sáng
-        '#FFDD33', // Vàng
-        '#F58F98', // Hồng đào
-        '#7EC845', // Xanh lá non
-        '#21B091', // Xanh ngọc
-        '#DEB887', // Be nhạt
-        '#FFB347', // Cam vàng
-        '#A0522D', // Nâu
+        '#b8860b', // Nâu ánh vàng (7.3)
+        '#a9746e', // Nâu caramel (5.32)
+        '#8b5f4d', // Nâu Mocha (5.32 + 7.3)
+        '#c2b280', // Nâu Tây Sáng (Ash Blonde + 7.3)
+        '#f8f8ff', // Bạch kim
       ];
 
       break;
     case 'B':
-      resultTitle = 'Bạn thuộc nhóm màu Summer - nhóm màu mùa Hè';
+      resultTitle = 'Bạn thuộc nhóm màu Summer (Nhẹ nhàng - Lạnh)';
       resultColors = 'Những người thuộc nhóm màu này mang đến cảm giác năng động, trẻ trung nhưng cũng không kém phần tươi trẻ nên rất phù hợp với tone makeup cũng như các màu sắc mang trạng thái tương tự. Bạn có thể tham khảo các gam màu như xanh da trời, vàng chanh, hồng nhạt,...';
       colorPalette = [
-        '#BC4B29', // Màu gạch
-        '#C8973C', // Vàng đậm
-        '#477E2C', // Xanh lá mạ
-        '#BDB76B', // Khaki
-        '#8A6642', // Nâu nhạt
-        '#6E260E', // Nâu đậm
-        '#C19A6B', // Be trầm
-        '#AF6E4D', // Nâu đất
-        '#CD7F32', // Đồng
-        '#78552B', // Nâu vàng
+        '#f0f0f0', // Bạch kim (Ash Blonde)
+        '#a2a4a5', // Xám khói (Cool Ash)
+        '#7d3b6a', // Tím mận (6.26)
+        '#a9746e', // Nâu caramel (5.32)
       ];
 
       break;
     case 'C':
-      resultTitle = 'Bạn thuộc nhóm màu Autumn - nhóm màu mùa Thu';
+      resultTitle = 'Bạn thuộc nhóm màu Autumn (Trầm ấm - Sâu)';
       resultColors = 'Những người thuộc nhóm màu Autumn thiên về cảm giác nhẹ nhàng, thanh lịch và nhã nhặn. Sức hút và diện mạo của bạn sẽ được thăng hạng bội phần nếu bạn lựa chọn các gam màu như kem, nâu, olive đấy.';
       colorPalette = [
-        '#FAB3C4', // Hồng nhạt
-        '#B0E0E6', // Pastel xanh
-        '#87CEFA', // Xanh da trời
-        '#000080', // Navy
-        '#9370DB', // Tím hoa cà
-        '#4169E1', // Xanh dương
-        '#6495ED', // Chàm
-        '#778899', // Xám nhạt
-        '#ADD8E6', // Xanh biển nhạt
-        '#708090', // Xám chì
+        '#c6904e', // Nâu ánh vàng (7.3)
+        '#a24655', // Đỏ mâm xôi (7.65)
+        '#a9746e', // Nâu caramel (5.32)
+        '#8d5a4c', // Nâu mocha (5.32 + 7.3)
+        '#cc704b', // Nâu ánh cam (7.65 + 7.3)
       ];
 
       break;
     case 'D':
-      resultTitle = 'Bạn thuộc nhóm màu Winter - nhóm màu mùa Đông';
+      resultTitle = 'Bạn thuộc nhóm màu Winter (Tương phản cao - Lặng sâu)';
       resultColors = 'Những người thuộc nhóm màu này đại diện cho sự trầm lặng, sắc sảo nhưng vẫn toát lên tinh thần quý phái và sang trọng. Các gam màu như đỏ rượu, ghi, đen, xám sẽ là lựa chọn không nên bỏ qua cho những người thuộc nhóm màu này.';
       colorPalette = [
-        '#800000', // Đỏ thẫm
-        '#0000CD', // Xanh đậm
-        '#DFFF00', // Vàng chanh
-        '#FF6EC7', // Hồng neon
-        '#006400', // Xanh lá thẫm
-        '#8B0000', // Đỏ bầm
-        '#000080', // Navy
-        '#696969', // Xám
-        '#000000', // Đen
-        '#4B0082', // Tím đậm
+        '#1f3a4d', // Xanh đại dương (3.1)
+        '#a2a4a5', // Xám khói (Cool Ash)
+        '#7d3b6a', // Tím mận (6.26)
+        '#912f46', // Cherry Cola (6.26 + 7.65)
+        '#9c4b3f', // Nâu ánh đỏ (5.32 + 7.65)
       ];
 
       break;
