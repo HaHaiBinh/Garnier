@@ -2,10 +2,13 @@ import completeImg from "../assets/quiz-complete.png";
 import { useEffect, useState } from "react";
 
 // Import các hình ảnh từ assets
-import milkCoffeeImg from "../assets/MILK_COFFEE.png"; // Thay đổi đường dẫn thực tế
-import cherryColaImg from "../assets/Cherry_cola.png";
-import charcoalLateImg from "../assets/CHARCOAL_LATTE.png";
-import orangeColdBrewImg from "../assets/ORANGE_COLDBREW.png";
+import milkCoffeeImg from "../assets/MILK_COFFEE.png"; // Nâu tây sáng
+import cherryColaImg from "../assets/Cherry_cola.png"; // Cherry Cola
+import charcoalLateImg from "../assets/CHARCOAL_LATTE.png"; // Xám khói
+import orangeColdBrewImg from "../assets/ORANGE_COLDBREW.png";  // Nâu ánh cam
+import vanilaMilkShakeImg from "../assets/VANILLA_MILKSHAKE.png";  // Bạch kim
+import oceanMojitoImg from "../assets/OCEAN_MOJITO.png";  // Xanh đại dương
+import raspberryColdBrewImg from "../assets/RASPBERRY_COLD_BREW.png";  // Nâu ánh đỏ
 
 const Summary = ({ userAnswers }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -62,11 +65,11 @@ const Summary = ({ userAnswers }) => {
       resultTitle = 'Bạn thuộc nhóm màu Spring (Tươi sáng - Ấm áp)';
       resultColors = 'Những người thuộc nhóm màu này thường phù hợp với các tông màu nhẹ nhàng như hồng, hồng nhạt, cam đào hoặc các gam màu pastel. Đây là nhóm màu mang đặc trưng đại diện cho sự ngọt ngào, tươi tắn và trẻ trung. Bạn có thể dựa theo những đặc điểm này để lựa chọn kiểu tóc và phong cách makeup phù hợp với bản thân.';
       colorImages = [
-        milkCoffeeImg,
-        cherryColaImg,
-        cherryColaImg,
-        charcoalLateImg,
-        orangeColdBrewImg
+        milkCoffeeImg, // Nâu ánh vàng (7.3) =======
+        milkCoffeeImg, // Nâu caramel (5.32)  ====
+        milkCoffeeImg, // Nâu Mocha (5.32 + 7.3) ====
+        milkCoffeeImg, // Nâu Tây Sáng (Ash Blonde + 7.3) 
+        vanilaMilkShakeImg, // Bạch kim
       ];
       break;
 
@@ -74,10 +77,10 @@ const Summary = ({ userAnswers }) => {
       resultTitle = 'Bạn thuộc nhóm màu Summer (Nhẹ nhàng - Lạnh)';
       resultColors = 'Những người thuộc nhóm màu này mang đến cảm giác năng động, trẻ trung nhưng cũng không kém phần tươi trẻ nên rất phù hợp với tone makeup cũng như các màu sắc mang trạng thái tương tự. Bạn có thể tham khảo các gam màu như xanh da trời, vàng chanh, hồng nhạt,...';
       colorImages = [
-        milkCoffeeImg,
-        cherryColaImg,
-        cherryColaImg,
-        orangeColdBrewImg
+        vanilaMilkShakeImg, // Bạch kim (Ash Blonde)
+        charcoalLateImg, // Xám khói (Cool Ash) 
+        charcoalLateImg, // Tím mận (6.26)  ==========
+        charcoalLateImg, // Nâu caramel (5.32) ==========
       ];
       break;
 
@@ -85,11 +88,11 @@ const Summary = ({ userAnswers }) => {
       resultTitle = 'Bạn thuộc nhóm màu Autumn (Trầm ấm - Sâu)';
       resultColors = 'Những người thuộc nhóm màu Autumn thiên về cảm giác nhẹ nhàng, thanh lịch và nhã nhặn. Sức hút và diện mạo của bạn sẽ được thăng hạng bội phần nếu bạn lựa chọn các gam màu như kem, nâu, olive đấy.';
       colorImages = [
-        milkCoffeeImg,
-        cherryColaImg,
-        cherryColaImg,
-        charcoalLateImg,
-        orangeColdBrewImg
+        vanilaMilkShakeImg, // Nâu ánh vàng (7.3) =========
+        vanilaMilkShakeImg, // Đỏ mâm xôi (7.65)  ============
+        vanilaMilkShakeImg, // Nâu caramel (5.32) ==========
+        vanilaMilkShakeImg, // Nâu mocha (5.32 + 7.3)========
+        orangeColdBrewImg, // Nâu ánh cam (7.65 + 7.3) 
       ];
       break;
 
@@ -97,11 +100,11 @@ const Summary = ({ userAnswers }) => {
       resultTitle = 'Bạn thuộc nhóm màu Winter (Tương phản cao - Lặng sâu)';
       resultColors = 'Những người thuộc nhóm màu này đại diện cho sự trầm lặng, sắc sảo nhưng vẫn toát lên tinh thần quý phái và sang trọng. Các gam màu như đỏ rượu, ghi, đen, xám sẽ là lựa chọn không nên bỏ qua cho những người thuộc nhóm màu này.';
       colorImages = [
-        milkCoffeeImg,
-        cherryColaImg,
-        cherryColaImg,
-        charcoalLateImg,
-        orangeColdBrewImg
+        oceanMojitoImg, // Xanh đại dương (3.1)
+        charcoalLateImg, // Xám khói (Cool Ash)  
+        vanilaMilkShakeImg, // Tím mận (6.26) =====
+        cherryColaImg, // Cherry Cola (6.26 + 7.65)
+        raspberryColdBrewImg, // Nâu ánh đỏ (5.32 + 7.65) 
       ];
       break;
 
@@ -170,8 +173,8 @@ const Summary = ({ userAnswers }) => {
           <h2>Đang phân tích kết quả...</h2>
           <div className="loading-progress">
             <div className="progress-bar">
-              <div 
-                className="progress-fill" 
+              <div
+                className="progress-fill"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
             </div>
