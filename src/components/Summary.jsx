@@ -9,6 +9,11 @@ import orangeColdBrewImg from "../assets/ORANGE_COLDBREW.png";  // Nâu ánh cam
 import vanilaMilkShakeImg from "../assets/VANILLA_MILKSHAKE.png";  // Bạch kim
 import oceanMojitoImg from "../assets/OCEAN_MOJITO.png";  // Xanh đại dương
 import raspberryColdBrewImg from "../assets/RASPBERRY_COLD_BREW.png";  // Nâu ánh đỏ
+import brownMochaImg from "../assets/BROWN_MOCHA.png";  // Nâu mocha
+import caramelBrownImg from "../assets/CARAMEL_BROWN.png";  // Nâu caramel
+import goldenBrownImg from "../assets/GOLDEN_BROWN.png";  // Nâu ánh vàng
+import plumRedImg from "../assets/PLUM_RED.png";  // Tím mận
+import raspberryRedImg from "../assets/RASPBERRY_RED.png";  // Đỏ mâm xôi
 
 const Summary = ({ userAnswers }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -65,9 +70,9 @@ const Summary = ({ userAnswers }) => {
       resultTitle = 'Bạn thuộc nhóm màu Spring (Tươi sáng - Ấm áp)';
       resultColors = 'Những người thuộc nhóm màu này thường phù hợp với các tông màu nhẹ nhàng như hồng, hồng nhạt, cam đào hoặc các gam màu pastel. Đây là nhóm màu mang đặc trưng đại diện cho sự ngọt ngào, tươi tắn và trẻ trung. Bạn có thể dựa theo những đặc điểm này để lựa chọn kiểu tóc và phong cách makeup phù hợp với bản thân.';
       colorImages = [
-        milkCoffeeImg, // Nâu ánh vàng (7.3) =======
-        milkCoffeeImg, // Nâu caramel (5.32)  ====
-        milkCoffeeImg, // Nâu Mocha (5.32 + 7.3) ====
+        goldenBrownImg, // Nâu ánh vàng (7.3) =======
+        caramelBrownImg, // Nâu caramel (5.32)  ====
+        brownMochaImg, // Nâu Mocha (5.32 + 7.3) ====
         milkCoffeeImg, // Nâu Tây Sáng (Ash Blonde + 7.3) 
         vanilaMilkShakeImg, // Bạch kim
       ];
@@ -79,8 +84,8 @@ const Summary = ({ userAnswers }) => {
       colorImages = [
         vanilaMilkShakeImg, // Bạch kim (Ash Blonde)
         charcoalLateImg, // Xám khói (Cool Ash) 
-        charcoalLateImg, // Tím mận (6.26)  ==========
-        charcoalLateImg, // Nâu caramel (5.32) ==========
+        plumRedImg, // Tím mận (6.26)  ==========
+        caramelBrownImg, // Nâu caramel (5.32) ==========
       ];
       break;
 
@@ -88,10 +93,10 @@ const Summary = ({ userAnswers }) => {
       resultTitle = 'Bạn thuộc nhóm màu Autumn (Trầm ấm - Sâu)';
       resultColors = 'Những người thuộc nhóm màu Autumn thiên về cảm giác nhẹ nhàng, thanh lịch và nhã nhặn. Sức hút và diện mạo của bạn sẽ được thăng hạng bội phần nếu bạn lựa chọn các gam màu như kem, nâu, olive đấy.';
       colorImages = [
-        vanilaMilkShakeImg, // Nâu ánh vàng (7.3) =========
-        vanilaMilkShakeImg, // Đỏ mâm xôi (7.65)  ============
-        vanilaMilkShakeImg, // Nâu caramel (5.32) ==========
-        vanilaMilkShakeImg, // Nâu mocha (5.32 + 7.3)========
+        goldenBrownImg, // Nâu ánh vàng (7.3) =========
+        raspberryRedImg, // Đỏ mâm xôi (7.65)  ============
+        caramelBrownImg, // Nâu caramel (5.32) ==========
+        brownMochaImg, // Nâu mocha (5.32 + 7.3)========
         orangeColdBrewImg, // Nâu ánh cam (7.65 + 7.3) 
       ];
       break;
@@ -102,7 +107,7 @@ const Summary = ({ userAnswers }) => {
       colorImages = [
         oceanMojitoImg, // Xanh đại dương (3.1)
         charcoalLateImg, // Xám khói (Cool Ash)  
-        vanilaMilkShakeImg, // Tím mận (6.26) =====
+        plumRedImg, // Tím mận (6.26) =====
         cherryColaImg, // Cherry Cola (6.26 + 7.65)
         raspberryColdBrewImg, // Nâu ánh đỏ (5.32 + 7.65) 
       ];
