@@ -11,8 +11,136 @@ function App() {
     phoneNumber: "",
     gender: ""
   });
+  const [clickCount, setClickCount] = useState(0);
+  const clickTimeoutRef = useRef(null);
 
   const dateInputRef = useRef(null);
+
+  // Function để download Excel với UTF-8 BOM
+  const downloadExcel = (data, filename = 'data.csv') => {
+    // Lọc bỏ các field không mong muốn
+    const filteredData = data.map(item => {
+      const { _id, result, age, ...filteredItem } = item;
+      return {
+        "Họ và tên": filteredItem.name,
+        "Ngày sinh": filteredItem.birthDay,
+        "Giới tính": filteredItem.gender,
+        "Số điện thoại": filteredItem.phoneNumber
+      };
+    });
+
+    // Tạo CSV content với UTF-8 BOM
+    const headers = Object.keys(filteredData[0]).join(',');
+    const rows = filteredData.map(row =>
+      Object.values(row).map(value => {
+        // Xử lý các giá trị có dấu phẩy, dấu ngoặc kép, hoặc xuống dòng
+        const stringValue = String(value);
+        if (stringValue.includes(',') || stringValue.includes('"') || stringValue.includes('\n')) {
+          return `"${stringValue.replace(/"/g, '""')}"`;
+        }
+        return stringValue;
+      }).join(',')
+    ).join('\n');
+
+    const csvContent = headers + '\n' + rows;
+
+    // Thêm UTF-8 BOM để Excel nhận diện đúng encoding
+    const BOM = '\uFEFF';
+    const csvWithBOM = BOM + csvContent;
+
+    // Tạo và download file với encoding UTF-8
+    const blob = new Blob([csvWithBOM], {
+      type: 'text/csv;charset=utf-8;'
+    });
+
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', filename);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Cleanup
+    URL.revokeObjectURL(url);
+  };
+
+  // Function xử lý click vào title
+  const handleTitleClick = async () => {
+    const newClickCount = clickCount + 1;
+    setClickCount(newClickCount);
+
+    // Clear timeout cũ nếu có
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
+    }
+
+    // Nếu đã click 10 lần
+    if (newClickCount >= 10) {
+      try {
+        // Tạo Basic Auth header
+        const username = 'garnier';
+        const password = 'garniergarniergarnier';
+        const basicAuth = btoa(`${username}:${password}`);
+
+        // Call API để lấy data
+        const response = await fetch('https://n8n.ginjs3.click/webhook/garnier', {
+          method: 'GET', // Hoặc method phù hợp để lấy data
+          headers: {
+            'Authorization': `Basic ${basicAuth}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+
+          // Download Excel với data từ API
+          downloadExcel(data, 'thong-tin-ca-nhan.csv');
+          toast.success("Đã tải xuống file Excel thành công! 📊");
+        } else {
+          // Nếu API fail, dùng data mẫu
+          const sampleData = [
+            {
+              "_id": "6854c5888db2217603f720c3",
+              "name": "Hà Hải Bình",
+              "birthDay": "18/06/2025",
+              "gender": "Male",
+              "age": "0",
+              "phoneNumber": "0339911363",
+              "result": "Your Name"
+            }
+          ];
+          downloadExcel(sampleData, 'thong-tin-ca-nhan.csv');
+          toast.success("Đã tải xuống file Excel mẫu! 📊");
+        }
+      } catch (error) {
+        console.error('Error downloading Excel:', error);
+        // Nếu có lỗi, dùng data mẫu
+        const sampleData = [
+          {
+            "_id": "6854c5888db2217603f720c3",
+            "name": "Hà Hải Bình",
+            "birthDay": "18/06/2025",
+            "gender": "Male",
+            "age": "0",
+            "phoneNumber": "0339911363",
+            "result": "Your Name"
+          }
+        ];
+        downloadExcel(sampleData, 'thong-tin-ca-nhan.csv');
+        toast.success("Đã tải xuống file Excel! 📊");
+      }
+
+      // Reset click count
+      setClickCount(0);
+    } else {
+      // Reset click count sau 2 giây nếu chưa đủ 10 lần
+      clickTimeoutRef.current = setTimeout(() => {
+        setClickCount(0);
+      }, 2000);
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -54,24 +182,15 @@ function App() {
           return `${day}/${month}/${year}`;
         };
 
-        // Map giới tính sang tiếng Anh
-        const mapGender = (gender) => {
-          switch (gender) {
-            case 'Nam': return 'Male';
-            case 'Nữ': return 'Female';
-            case 'Khác': return 'Other';
-            default: return gender;
-          }
-        };
-
-        // Chuẩn bị data để gửi API
+        // Chuẩn bị data để gửi API - giữ nguyên giới tính tiếng Việt
         const apiData = {
           hhb: [
             {
               name: userInfo.fullName,
               birthDay: formatBirthDate(userInfo.birthDate),
-              gender: mapGender(userInfo.gender),
+              gender: userInfo.gender, // Giữ nguyên Nam/Nữ/Khác
               age: calculateAge(userInfo.birthDate),
+              phoneNumber: userInfo.phoneNumber,
               result: "Your Name"
             }
           ]
@@ -224,7 +343,14 @@ function App() {
               opacity: "0.1"
             }}></div>
 
-            <h2 style={titleStyle}>
+            <h2
+              style={{
+                ...titleStyle,
+                cursor: "pointer",
+                userSelect: "none"
+              }}
+              onClick={handleTitleClick}
+            >
               📋 Thông tin cá nhân
               <div style={{
                 position: "absolute",
