@@ -133,7 +133,7 @@ function App() {
     textAlign: "center",
     marginBottom: "30px",
     color: "#047857",
-    fontSize: "28px",
+    fontSize: "22px",
     fontWeight: "700",
     position: "relative",
     marginTop: 0,
@@ -148,7 +148,7 @@ function App() {
     display: "block",
     marginBottom: "10px",
     color: "#065f46",
-    fontSize: "15px",
+    fontSize: "13px",
     fontWeight: "600",
     textTransform: "uppercase",
     letterSpacing: "0.5px"
@@ -156,7 +156,7 @@ function App() {
 
   const inputStyle = {
     width: "100%",
-    padding: "16px 20px",
+    padding: "13px 20px",
     border: "2px solid #a7f3d0",
     borderRadius: "12px",
     fontSize: "16px",
@@ -180,7 +180,7 @@ function App() {
     color: "white",
     border: "none",
     borderRadius: "12px",
-    fontSize: "18px",
+    fontSize: "15px",
     fontWeight: "700",
     cursor: "pointer",
     transition: "all 0.3s ease",
