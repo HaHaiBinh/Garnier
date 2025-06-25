@@ -14,8 +14,6 @@ function App() {
   const [clickCount, setClickCount] = useState(0);
   const clickTimeoutRef = useRef(null);
 
-  const dateInputRef = useRef(null);
-
   // Function để download Excel với UTF-8 BOM
   const downloadExcel = (data, filename = 'data.csv') => {
     // Lọc bỏ các field không mong muốn
@@ -150,36 +148,19 @@ function App() {
     }));
   };
 
-  const handleDateWrapperClick = () => {
-    if (dateInputRef.current) {
-      dateInputRef.current.showPicker();
-    }
-  };
-
   const handleStartQuiz = async () => {
     // Kiểm tra tất cả field đã được điền
     if (userInfo.fullName && userInfo.birthDate && userInfo.phoneNumber && userInfo.gender) {
       try {
-        // Tính tuổi từ ngày sinh
-        const calculateAge = (birthDate) => {
-          const today = new Date();
-          const birth = new Date(birthDate);
-          let age = today.getFullYear() - birth.getFullYear();
-          const monthDiff = today.getMonth() - birth.getMonth();
-
-          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-            age--;
-          }
-          return age.toString();
+        // Tính tuổi từ năm sinh
+        const calculateAge = (birthYear) => {
+          const currentYear = new Date().getFullYear();
+          return (currentYear - parseInt(birthYear)).toString();
         };
 
-        // Format ngày sinh từ YYYY-MM-DD sang DD/MM/YYYY
-        const formatBirthDate = (dateString) => {
-          const date = new Date(dateString);
-          const day = date.getDate().toString().padStart(2, '0');
-          const month = (date.getMonth() + 1).toString().padStart(2, '0');
-          const year = date.getFullYear();
-          return `${day}/${month}/${year}`;
+        // Format năm sinh - giữ nguyên vì chỉ là năm
+        const formatBirthDate = (year) => {
+          return `01/01/${year}`; // Format thành 01/01/YYYY để có ngày sinh đầy đủ
         };
 
         // Chuẩn bị data để gửi API - giữ nguyên giới tính tiếng Việt
@@ -393,34 +374,31 @@ function App() {
 
             <div style={inputGroupStyle}>
               <label htmlFor="birthDate" style={labelStyle}>
-                🎂 Ngày sinh <span style={{ color: "red" }}>*</span>
+                🎂 Năm sinh <span style={{ color: "red" }}>*</span>
               </label>
-              <div style={dateWrapperStyle} onClick={handleDateWrapperClick}>
-                <input
-                  ref={dateInputRef}
-                  type="date"
-                  id="birthDate"
-                  name="birthDate"
-                  value={userInfo.birthDate}
-                  onChange={handleInputChange}
-                  style={{
-                    ...inputStyle,
-                    cursor: "pointer"
-                  }}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = "#10b981";
-                    e.target.style.backgroundColor = "#ffffff";
-                    e.target.style.boxShadow = "0 0 0 4px rgba(16, 185, 129, 0.1)";
-                    e.target.style.transform = "translateY(-2px)";
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = "#a7f3d0";
-                    e.target.style.backgroundColor = "#f0fdf4";
-                    e.target.style.boxShadow = "none";
-                    e.target.style.transform = "translateY(0)";
-                  }}
-                />
-              </div>
+              <input
+                type="number"
+                id="birthDate"
+                name="birthDate"
+                value={userInfo.birthDate}
+                onChange={handleInputChange}
+                min="1920"
+                max="2025"
+                placeholder="Nhập năm sinh (VD: 1990)"
+                style={inputStyle}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#10b981";
+                  e.target.style.backgroundColor = "#ffffff";
+                  e.target.style.boxShadow = "0 0 0 4px rgba(16, 185, 129, 0.1)";
+                  e.target.style.transform = "translateY(-2px)";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#a7f3d0";
+                  e.target.style.backgroundColor = "#f0fdf4";
+                  e.target.style.boxShadow = "none";
+                  e.target.style.transform = "translateY(0)";
+                }}
+              />
             </div>
 
             <div style={inputGroupStyle}>

@@ -39,13 +39,6 @@ const Question = ({ index, onSelectAnswer, onSkip }) => {
         mode={answerState}
       />
       <div className="question-content">
-        <div className="question-image">
-          <img
-            src={QUESTIONS[index].image}
-            alt={`Question ${index + 1}`}
-            className="question-img"
-          />
-        </div>
         <div className="question-text-answers">
           <h2>{QUESTIONS[index].text}</h2>
           <Answers
