@@ -4,16 +4,25 @@ import { useEffect, useState } from "react";
 // Import các hình ảnh từ assets
 import milkCoffeeImg from "../assets/MILK_COFFEE.png"; // Nâu tây sáng
 import cherryColaImg from "../assets/Cherry_cola.png"; // Cherry Cola
-import charcoalLateImg from "../assets/CHARCOAL_LATTE.png"; // Xám khói
+import charcoalLateImg from "../assets/CHARCOAL_LATTE.png"; // Xám khói xxx
 import orangeColdBrewImg from "../assets/ORANGE_COLDBREW.png";  // Nâu ánh cam
-import vanilaMilkShakeImg from "../assets/VANILLA_MILKSHAKE.png";  // Bạch kim
-import oceanMojitoImg from "../assets/OCEAN_MOJITO.png";  // Xanh đại dương
-import raspberryColdBrewImg from "../assets/RASPBERRY_COLD_BREW.png";  // Nâu ánh đỏ
+import vanilaMilkShakeImg from "../assets/VANILLA_MILKSHAKE.png";  // Bạch kim xxx
+import oceanMojitoImg from "../assets/OCEAN_MOJITO.png";  // Xanh đại dương xxx
+import raspberryColdBrewImg from "../assets/RASPBERRY_COLD_BREW.png";  // Nâu ánh đỏ 
 import brownMochaImg from "../assets/BROWN_MOCHA.png";  // Nâu mocha
-import caramelBrownImg from "../assets/CARAMEL_BROWN.png";  // Nâu caramel
-import goldenBrownImg from "../assets/GOLDEN_BROWN.png";  // Nâu ánh vàng
-import plumRedImg from "../assets/PLUM_RED.png";  // Tím mận
-import raspberryRedImg from "../assets/RASPBERRY_RED.png";  // Đỏ mâm xôi
+import caramelBrownImg from "../assets/CARAMEL_BROWN.png";  // Nâu caramel xxx
+import goldenBrownImg from "../assets/GOLDEN_BROWN.png";  // Nâu ánh vàng xxx
+import plumRedImg from "../assets/PLUM_RED.png";  // Tím mận 
+import raspberryRedImg from "../assets/RASPBERRY_RED.png";  // Đỏ mâm xôi xxx
+
+import nauCaramel from "../assets/nauCaramel.png";
+import nauBasic from "../assets/nauBasic.png";
+import xamKhoi from "../assets/xamKhoi.png";
+import xanhDaiDuong from "../assets/xanhDaiDuong.png";
+import doMan from "../assets/doMan.png";
+import nauAnhVang from "../assets/nauAnhVang.png";
+import doMamXoi from "../assets/doMamXoi.png";
+import bachKim from "../assets/bachKim.png";
 
 const Summary = ({ userAnswers }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -67,49 +76,115 @@ const Summary = ({ userAnswers }) => {
 
   switch (mostFrequent) {
     case 'A':
-      resultTitle = 'Bạn thuộc nhóm màu Spring (Tươi sáng - Ấm áp)';
-      resultColors = 'Những người thuộc nhóm màu này thường phù hợp với các tông màu nhẹ nhàng như hồng, hồng nhạt, cam đào hoặc các gam màu pastel. Đây là nhóm màu mang đặc trưng đại diện cho sự ngọt ngào, tươi tắn và trẻ trung. Bạn có thể dựa theo những đặc điểm này để lựa chọn kiểu tóc và phong cách makeup phù hợp với bản thân.';
+      resultTitle = 'DEEP SPRING';
+      resultColors = 'NGỌT NGÀO, TƯƠI TẮN VÀ TRẺ TRUNG';
+      colorPalette = [
+        "#eb4a20", // đỏ cam
+        "#e2705a", // cam đất
+        "#f29a45", // cam sáng
+        "#ffee5a", // vàng nhạt
+        "#ee6e82", // hồng dâu
+        "#88bd5f", // xanh lá sáng
+        "#40b68c", // xanh ngọc
+        "#ddb06c", // vàng nâu nhạt
+        "#f2b233", // vàng cam
+        "#8c4c27"  // nâu đất
+      ];
       colorImages = [
-        goldenBrownImg, // Nâu ánh vàng (7.3) =======
-        caramelBrownImg, // Nâu caramel (5.32)  ====
-        brownMochaImg, // Nâu Mocha (5.32 + 7.3) ====
-        milkCoffeeImg, // Nâu Tây Sáng (Ash Blonde + 7.3) 
-        vanilaMilkShakeImg, // Bạch kim
+        // goldenBrownImg, // Nâu ánh vàng (7.3) =======
+        // caramelBrownImg, // Nâu caramel (5.32)  ====
+        // brownMochaImg, // Nâu Mocha (5.32 + 7.3) ====
+        // milkCoffeeImg, // Nâu Tây Sáng (Ash Blonde + 7.3) 
+        // vanilaMilkShakeImg, // Bạch kim
+
+        nauCaramel,
+        nauBasic,
+        bachKim
+
       ];
       break;
 
     case 'B':
-      resultTitle = 'Bạn thuộc nhóm màu Summer (Nhẹ nhàng - Lạnh)';
-      resultColors = 'Những người thuộc nhóm màu này mang đến cảm giác năng động, trẻ trung nhưng cũng không kém phần tươi trẻ nên rất phù hợp với tone makeup cũng như các màu sắc mang trạng thái tương tự. Bạn có thể tham khảo các gam màu như xanh da trời, vàng chanh, hồng nhạt,...';
+      resultTitle = 'DEEP SUMMER';
+      resultColors = 'MÁT MẺ, TRẺ TRUNG VÀ NĂNG ĐỘNG';
+      colorPalette = [
+        "#e42928", // đỏ tươi
+        "#e35d32", // cam đỏ
+        "#eb7326", // cam sáng
+        "#f5902a", // cam nhạt
+        "#fedc3b", // vàng sáng
+        "#808c3d", // xanh olive
+        "#264e2c", // xanh rêu đậm
+        "#d2ab6e", // vàng nâu
+        "#a47741", // nâu nhạt
+        "#74391f"  // nâu đất đậm
+      ]
       colorImages = [
-        vanilaMilkShakeImg, // Bạch kim (Ash Blonde)
-        charcoalLateImg, // Xám khói (Cool Ash) 
-        plumRedImg, // Tím mận (6.26)  ==========
-        caramelBrownImg, // Nâu caramel (5.32) ==========
+        // vanilaMilkShakeImg, // Bạch kim (Ash Blonde)
+        // charcoalLateImg, // Xám khói (Cool Ash) 
+        // plumRedImg, // Tím mận (6.26)  ==========
+        // caramelBrownImg, // Nâu caramel (5.32) ==========
+
+        bachKim,
+        xamKhoi,
+        nauCaramel
       ];
       break;
 
     case 'C':
-      resultTitle = 'Bạn thuộc nhóm màu Autumn (Trầm ấm - Sâu)';
-      resultColors = 'Những người thuộc nhóm màu Autumn thiên về cảm giác nhẹ nhàng, thanh lịch và nhã nhặn. Sức hút và diện mạo của bạn sẽ được thăng hạng bội phần nếu bạn lựa chọn các gam màu như kem, nâu, olive đấy.';
+      resultTitle = 'DEEP AUTUMN';
+      resultColors = 'NHẸ NHÀNG, THANH LỊCH VÀ NHÃ NHẶN';
+      colorPalette = [
+        "#f3b4c1", // hồng nhạt
+        "#e96fa2", // hồng đậm
+        "#e7315f", // đỏ hồng
+        "#f6f0c3", // vàng kem
+        "#66bc97", // xanh ngọc nhạt
+        "#74c1e3", // xanh dương nhạt
+        "#9c94c4", // tím xanh pastel
+        "#8e3c87", // tím đỏ
+        "#466284", // xanh navy nhạt
+        "#a4b3bb"  // xám xanh
+      ];
       colorImages = [
-        goldenBrownImg, // Nâu ánh vàng (7.3) =========
-        raspberryRedImg, // Đỏ mâm xôi (7.65)  ============
-        caramelBrownImg, // Nâu caramel (5.32) ==========
-        brownMochaImg, // Nâu mocha (5.32 + 7.3)========
-        orangeColdBrewImg, // Nâu ánh cam (7.65 + 7.3) 
+        // goldenBrownImg, // Nâu ánh vàng (7.3) =========
+        // raspberryRedImg, // Đỏ mâm xôi (7.65)  ============
+        // caramelBrownImg, // Nâu caramel (5.32) ==========
+        // brownMochaImg, // Nâu mocha (5.32 + 7.3)========
+        // orangeColdBrewImg, // Nâu ánh cam (7.65 + 7.3) 
+
+        nauAnhVang,
+        doMamXoi,
+        nauCaramel,
+        // nauBasic,
       ];
       break;
 
     case 'D':
-      resultTitle = 'Bạn thuộc nhóm màu Winter (Tương phản cao - Lặng sâu)';
-      resultColors = 'Những người thuộc nhóm màu này đại diện cho sự trầm lặng, sắc sảo nhưng vẫn toát lên tinh thần quý phái và sang trọng. Các gam màu như đỏ rượu, ghi, đen, xám sẽ là lựa chọn không nên bỏ qua cho những người thuộc nhóm màu này.';
+      resultTitle = 'DEEP WINTER';
+      resultColors = 'SẮC SẢO, QUÝ PHÁI VÀ SANG TRỌNG';
+      colorPalette = [
+        "#e04579", // hồng tươi
+        "#e50085", // hồng cánh sen
+        "#b6002a", // đỏ đậm
+        "#f5f59d", // vàng nhạt
+        "#00994f", // xanh lá tươi
+        "#003f35", // xanh lá đậm
+        "#0046a1", // xanh lam hoàng gia
+        "#1d2e5c", // xanh navy
+        "#251918", // nâu đen
+        "#ffffff"  // trắng
+      ]
       colorImages = [
-        oceanMojitoImg, // Xanh đại dương (3.1)
-        charcoalLateImg, // Xám khói (Cool Ash)  
-        plumRedImg, // Tím mận (6.26) =====
-        cherryColaImg, // Cherry Cola (6.26 + 7.65)
-        raspberryColdBrewImg, // Nâu ánh đỏ (5.32 + 7.65) 
+        // oceanMojitoImg, // Xanh đại dương (3.1)
+        // charcoalLateImg, // Xám khói (Cool Ash)  
+        // plumRedImg, // Tím mận (6.26) =====
+        // cherryColaImg, // Cherry Cola (6.26 + 7.65)
+        // raspberryColdBrewImg, // Nâu ánh đỏ (5.32 + 7.65) 
+
+        xanhDaiDuong,
+        xamKhoi,
+        doMan,
       ];
       break;
 
@@ -194,14 +269,31 @@ const Summary = ({ userAnswers }) => {
     <>
       <div id="summary">
         <img src={completeImg} alt="Quiz Over" onClick={handleClick} style={{ cursor: 'pointer' }} />
-        <h2>Kết quả</h2>
+        {/* <h2>Kết quả</h2> */}
+        <h2>{resultTitle}</h2>
 
         <div id="result-stats">
-          <p style={{ fontSize: '1.2rem' }}>{resultTitle}</p>
-          <p><strong>{resultColors}</strong></p>
+          {/* <div className="result-title">{resultTitle}</div> */}
+          <div className="result-subtitle">{resultColors}</div>
 
-          {
-            colorImages.length > 0 && (
+          <div className="main-color-section">
+            <div className="main-color-label">MAIN COLOR</div>
+            {colorPalette.length > 0 && (
+              <div className="color-palette">
+                {colorPalette.map((color, index) => (
+                  <div
+                    key={index}
+                    className="color-swatch"
+                    style={{ backgroundColor: color }}
+                  ></div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="product-section">
+            <div className="product-section-title">MÀU SẮC TÓC PHÙ HỢP VỚI BẠN LÀ</div>
+            {colorImages.length > 0 && (
               <div className="img-gallery">
                 {colorImages.map((image, index) => (
                   <div key={index}>
@@ -212,11 +304,10 @@ const Summary = ({ userAnswers }) => {
                   </div>
                 ))}
               </div>
-            )
-          }
+            )}
+          </div>
         </div>
       </div>
-
     </>
   );
 };
