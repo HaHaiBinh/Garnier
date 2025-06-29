@@ -46,6 +46,7 @@ const Question = ({ index, onSelectAnswer, onSkip }) => {
             selectedAnswer={answer.selectedAnswer}
             answerState={answerState}
             handleSelectAnswer={handleSelectAnswer}
+            questionIndex={index}
           />
         </div>
       </div>

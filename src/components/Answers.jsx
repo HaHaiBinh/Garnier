@@ -16,7 +16,11 @@ const Answers = (props) => {
           isSelected
         ) {
           classes = props.answerState;
-        }
+        } 
+        
+        // Thêm class cho câu 5 (questionIndex = 4)
+        const isQuestion5 = props.questionIndex === 4;
+        
         return (
           <li key={answerText} className="answer">
             <button
@@ -26,11 +30,11 @@ const Answers = (props) => {
             >
               <div className="answer-content">
                 {answerImage && (
-                  <div className="answer-image">
+                  <div className={`answer-image ${isQuestion5 ? 'question-5' : ''}`}>
                     <img 
                       src={answerImage} 
                       alt={`Answer ${index + 1}`} 
-                      className="answer-img"
+                      className={`answer-img ${isQuestion5 ? 'question-5' : ''}`}
                     />
                   </div>
                 )}

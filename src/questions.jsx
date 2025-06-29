@@ -30,10 +30,10 @@ import hinh4B from './assets/hinh4B.png';
 import hinh4C from './assets/hinh4C.png';
 import hinh4D from './assets/hinh4D.jpg';
 
-import hinh5A from './assets/hinh5A.png';
-import hinh5B from './assets/hinh5B.png';
-import hinh5C from './assets/hinh5C.png';
-import hinh5D from './assets/hinh5D.png';
+import hinh5A from './assets/A.png';
+import hinh5B from './assets/B.jpg';
+import hinh5C from './assets/C.png';
+import hinh5D from './assets/D.png';
 
 import hinh6A from './assets/hinh6A.jpg';
 import hinh6B from './assets/hinh6B.jpg';

@@ -148,74 +148,78 @@ function App() {
     }));
   };
 
-  const handleStartQuiz = async () => {
-    // Kiểm tra tất cả field đã được điền
-    if (userInfo.fullName && userInfo.birthDate && userInfo.phoneNumber && userInfo.gender) {
-      try {
-        // Tính tuổi từ năm sinh
-        const calculateAge = (birthYear) => {
-          const currentYear = new Date().getFullYear();
-          return (currentYear - parseInt(birthYear)).toString();
-        };
-
-        // Format năm sinh - giữ nguyên vì chỉ là năm
-        const formatBirthDate = (year) => {
-          return `01/01/${year}`; // Format thành 01/01/YYYY để có ngày sinh đầy đủ
-        };
-
-        // Chuẩn bị data để gửi API - giữ nguyên giới tính tiếng Việt
-        const apiData = {
-          hhb: [
-            {
-              name: userInfo.fullName,
-              birthDay: formatBirthDate(userInfo.birthDate),
-              gender: userInfo.gender, // Giữ nguyên Nam/Nữ/Khác
-              age: calculateAge(userInfo.birthDate),
-              phoneNumber: userInfo.phoneNumber,
-              result: "Your Name"
-            }
-          ]
-        };
-
-        // Tạo Basic Auth header
-        const username = 'garnier';
-        const password = 'garniergarniergarnier';
-        const basicAuth = btoa(`${username}:${password}`);
-
-        // Call API với Basic Auth
-        const response = await fetch('https://n8n.ginjs3.click/webhook/garnier', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Basic ${basicAuth}`,
-          },
-          body: JSON.stringify(apiData)
-        });
-
-        if (response.ok) {
-          const result = await response.json();
-          console.log('API Response:', result);
-
-          setIsRunning(true);
-          toast.success("Chúc bạn có một bài kiểm tra vui vẻ! 🎉");
-        } else {
-          throw new Error('API call failed');
-        }
-
-      } catch (error) {
-        console.error('Error calling API:', error);
-        toast.error("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại!", {
-          position: "top-right",
-          autoClose: 2000,
-        });
-      }
-    } else {
-      toast.error("Vui lòng điền đầy đủ thông tin!", {
-        position: "top-right",
-        autoClose: 2000,
-      });
-    }
+  const handleStartQuiz = () => {
+    setIsRunning(true);
   };
+
+  // const handleStartQuiz = async () => {
+  //   // Kiểm tra tất cả field đã được điền
+  //   if (userInfo.fullName && userInfo.birthDate && userInfo.phoneNumber && userInfo.gender) {
+  //     try {
+  //       // Tính tuổi từ năm sinh
+  //       const calculateAge = (birthYear) => {
+  //         const currentYear = new Date().getFullYear();
+  //         return (currentYear - parseInt(birthYear)).toString();
+  //       };
+
+  //       // Format năm sinh - giữ nguyên vì chỉ là năm
+  //       const formatBirthDate = (year) => {
+  //         return `01/01/${year}`; // Format thành 01/01/YYYY để có ngày sinh đầy đủ
+  //       };
+
+  //       // Chuẩn bị data để gửi API - giữ nguyên giới tính tiếng Việt
+  //       const apiData = {
+  //         hhb: [
+  //           {
+  //             name: userInfo.fullName,
+  //             birthDay: formatBirthDate(userInfo.birthDate),
+  //             gender: userInfo.gender, // Giữ nguyên Nam/Nữ/Khác
+  //             age: calculateAge(userInfo.birthDate),
+  //             phoneNumber: userInfo.phoneNumber,
+  //             result: "Your Name"
+  //           }
+  //         ]
+  //       };
+
+  //       // Tạo Basic Auth header
+  //       const username = 'garnier';
+  //       const password = 'garniergarniergarnier';
+  //       const basicAuth = btoa(`${username}:${password}`);
+
+  //       // Call API với Basic Auth
+  //       const response = await fetch('https://n8n.ginjs3.click/webhook/garnier', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': `Basic ${basicAuth}`,
+  //         },
+  //         body: JSON.stringify(apiData)
+  //       });
+
+  //       if (response.ok) {
+  //         const result = await response.json();
+  //         console.log('API Response:', result);
+
+  //         setIsRunning(true);
+  //         toast.success("Chúc bạn có một bài kiểm tra vui vẻ! 🎉");
+  //       } else {
+  //         throw new Error('API call failed');
+  //       }
+
+  //     } catch (error) {
+  //       console.error('Error calling API:', error);
+  //       toast.error("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại!", {
+  //         position: "top-right",
+  //         autoClose: 2000,
+  //       });
+  //     }
+  //   } else {
+  //     toast.error("Vui lòng điền đầy đủ thông tin!", {
+  //       position: "top-right",
+  //       autoClose: 2000,
+  //     });
+  //   }
+  // };
 
   const formContainerStyle = {
     padding: "20px 40px",

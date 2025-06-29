@@ -23,6 +23,11 @@ import doMan from "../assets/doMan.png";
 import nauAnhVang from "../assets/nauAnhVang.png";
 import doMamXoi from "../assets/doMamXoi.png";
 import bachKim from "../assets/bachKim.png";
+import cherryCola from "../assets/cherryCola.png";
+import nauAnhCam from "../assets/nauAnhCam.png";
+import nauAnhDo from "../assets/nauAnhDo.png";
+import nauMocha from "../assets/nauMocha.png";
+import nauTaySang from "../assets/nauTaySang.png";
 
 const Summary = ({ userAnswers }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -96,9 +101,10 @@ const Summary = ({ userAnswers }) => {
         // brownMochaImg, // Nâu Mocha (5.32 + 7.3) ====
         // milkCoffeeImg, // Nâu Tây Sáng (Ash Blonde + 7.3) 
         // vanilaMilkShakeImg, // Bạch kim
-
+        nauAnhVang,
         nauCaramel,
-        nauBasic,
+        nauMocha,
+        nauTaySang,
         bachKim
 
       ];
@@ -127,6 +133,7 @@ const Summary = ({ userAnswers }) => {
 
         bachKim,
         xamKhoi,
+        doMan,
         nauCaramel
       ];
       break;
@@ -156,7 +163,8 @@ const Summary = ({ userAnswers }) => {
         nauAnhVang,
         doMamXoi,
         nauCaramel,
-        // nauBasic,
+        nauMocha,
+        nauAnhCam
       ];
       break;
 
@@ -185,6 +193,8 @@ const Summary = ({ userAnswers }) => {
         xanhDaiDuong,
         xamKhoi,
         doMan,
+        cherryCola,
+        nauAnhDo,
       ];
       break;
 
